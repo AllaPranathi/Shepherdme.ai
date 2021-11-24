@@ -11,7 +11,6 @@ app.use(bodyParser.json());
 // Serve only the static files from the dist directory
 app.use(express.static(__dirname + '/dist/AbuseFlagger'));
 
-
 app.get('/', function(req,res) {
     res.sendFile(path.join(__dirname+'/dist/AbuseFlagger/index.html'));
 });

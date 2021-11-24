@@ -36,3 +36,10 @@ Identity hate: hatred, hostility, or violence towards members of a race, ethnici
 
 ## Installation Guide
 TBD
+
+![File Upload Functionality](https://github.com/AllaPranathi/Shepherdme.ai/blob/main/screenshots/main-ui.PNG "Main User Interface")
+![File Upload Functionality](https://github.com/AllaPranathi/Shepherdme.ai/blob/main/screenshots/file-upload.PNG "File Upload Functionality")
+![Abusive Content Reported](https://github.com/AllaPranathi/Shepherdme.ai/blob/main/screenshots/abusive-content.PNG "Abusive Content Reported")
+![Non-Abusive Content Reported](https://github.com/AllaPranathi/Shepherdme.ai/blob/main/screenshots/file-upload.PNG "Non-Abusive Content Reported")
+![Non-Abusive Content Reported](https://github.com/AllaPranathi/Shepherdme.ai/blob/main/screenshots/file-upload.PNG "Non-Abusive Content Reported")
+![Project Limitations](https://github.com/AllaPranathi/Shepherdme.ai/blob/main/screenshots/limitations.PNG "Project Limitations")
