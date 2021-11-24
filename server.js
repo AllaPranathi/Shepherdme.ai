@@ -9,6 +9,7 @@ const app = express();
 app.use(express.static(__dirname + '/dist/AbuseFlagger'));
 
 app.post('/data', function(req, res) {
+    console.log("Received request")
     const options = {
         hostname: 'http://169.51.206.176',
         port: 32451,
@@ -21,8 +22,11 @@ app.post('/data', function(req, res) {
     }
     const predictReq = http.request(options, predictRes => {
         console.log('statusCode: ${res.statusCode}')
-        predictRes.on('data', d => {
-            res.send(d)
+        predictRes.on('data', function (data) {
+            curr = data.body
+        })
+        predictRes.on('end', function() {
+            res.end(curr)
         })
     })
     predictReq.write(req.body)
@@ -34,3 +38,4 @@ app.get('/*', function(req,res) {
 });
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
+console.log("Server started")
