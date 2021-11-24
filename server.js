@@ -17,7 +17,7 @@ app.post('/data', function(req, res) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Content-Length': req.length
+            'Content-Length': req.body.length
         }
     }
     const predictReq = http.request(options, predictRes => {
