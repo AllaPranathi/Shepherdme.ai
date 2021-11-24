@@ -1,6 +1,6 @@
 # ShepherdMe.ai
 
-This repository contains code to instantiate and deploy a toxic comment classifier along with a custom UI wrapper. This model is able to detect 6 types of toxicity in a text fragment. The six detectable types are - toxic, severe toxic, obscene, threat, insult, and identity hate.
+This repository contains code to instantiate and deploy a toxic comment classifier along with a custom UI wrapper. This model is able to detect 6 types of toxicity in a text fragment. The six detectable types are - toxic, severe toxic, obscene, threat, insult, and identity hate. The hosted model can be found here - https://heroku-deployment-shepherme.herokuapp.com/
 
 The model [MAX Toxic Comment Classifier](https://github.com/IBM/MAX-Toxic-Comment-Classifier/) is based on the [pre-trained BERT-Base, English Uncased](https://github.com/google-research/bert/blob/master/README.md) model and was finetuned on the [Toxic Comment Classification Dataset](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/data) using the [Huggingface BERT Pytorch repository](https://github.com/huggingface/pytorch-pretrained-BERT).
 
@@ -58,7 +58,6 @@ ibmcloud plugin install container-registry
 ibmcloud plugin install cloud-functionsGood M
 ibmcloud plugin install container-service
 ```
-
 ### Creating K8S Cluster
 
 Create a Kubernetes cluster called **mycluster-free** on your IBM Cloud account. The free cluster type will suffice. Create a Kubernetes cluster from the [IBM Catalog](https://cloud.ibm.com/kubernetes/catalog/about). Setup the kubernetes cluster in the US South using:
@@ -68,36 +67,53 @@ ibmcloud login -a https://cloud.ibm.com
 ibmcloud ks region-set us-south
 ibmcloud ks cluster config --cluster mycluster-free
 ```
-### Downloading the project
-Download [ShepherdMe.ai project](https://github.com/AllaPranathi/Shepherdme.ai.git). If using Command Line remember to use git clone followed by the link!
+### Cloning and downloading the project
+
+Download [ShepherdMe.ai project](https://github.com/AllaPranathi/Shepherdme.ai.git). If using command line remember to use git clone followed by the link!
   - Unzip the folder and open the location in Powershell
   - Run ```shell npm i``` to install the necessary libraries and dependencies
   - Run ```shell npm run ng serve``` to compile and locally run the app. By default the angular app runs on https:
 
-You should be able to see the angular app running. 
+The app is now ready to be deployed on Heroku. Yay!
 
-### Downloading the project
-5.
+**NOTE - If you see a warning similar to - Your global Angular CLI version (12.2.12) is greater than your local version (10.0.8), there's nothing to worry about.
+
+### Setting up Heroku
+
+Login to your dashboard and create a new app. Yep, that's the only thing to be done here.
 
 ## Deployment Guide
 
 We have created our User Interface on Angular and have utilised the Heroku platform to host the UI application. Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud. 
 
-1.  Deploy the IBM MAX Model
-  -  Clone the [MAX-Model repository](https://github.com/IBM/MAX-Toxic-Comment-Classifier/) from GitHub
-  -  
+### Deploying the IBM MAX Model
 
+1.  Clone the [MAX-Toxic-Comment-Classifier repository](https://github.com/IBM/MAX-Toxic-Comment-Classifier/) from GitHub
+2.  Apply the configuration file to your Kubernetes cluster
 ```shell
-kubectl apply -f .\shepherdme-ai.yaml
-ibmcloud ks workers -c mycluster-free
-kubectl get services
-kubectl describe service shepherdme-ai | grep Port
-//To get public IP
+cd MAX-Toxic-Comment-Classifier
+kubectl apply -f .\max-toxic-comment-classifier.yaml
+```
+3. After the model is deployed (give it some time), find the public IP address and port that the API is served on. NOTE - mycluster-free is the name we set earlier.
+  - For public IP
+```shell
 ibmcloud ks workers -c mycluster-free
 ```
+  - For port
+```shell
+kubectl describe service max-toxic-comment-classifier | grep Port
+```
+NOTE - Remember to delete the K8S instance you created earlier after you're done. ShepherdMe.ai is not responsible for any charges you might face. Brain maybe but? ;)
 
-- Have the angular app running locally
-  - 
+### Deploying the Angular App on Heroku
+
+1. In the Deploy menu, under Deployment method, select GitHub and connect to the github repo you just forked/cloned. For us it was the main branch. This will help us to make automatic deployments every time we push to our master branch.
+2. Run ```shell npm i express --save locally``` to access the express server that helps us serve our hosted application.
+3. Go to Heroku Dashboard > Select your app > Deploy > Deploy Branch
+4. Your app will be up and running on the Heroku platform. 
+
+And that's it Folks!
+
 ### Main User Interface
 ![Main User Interface](https://github.com/AllaPranathi/Shepherdme.ai/blob/main/screenshots/main-ui.PNG "Main User Interface")
 ### File Upload Functionality
