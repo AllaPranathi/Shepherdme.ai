@@ -1,6 +1,6 @@
 {
-  "name": "abuse-flagger",
-  "version": "0.0.0",
+  "name": "shepherdme-ai",
+  "version": "1.0.3",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
@@ -23,10 +23,11 @@
     "@angular/platform-browser-dynamic": "~10.0.4",
     "@angular/router": "~10.0.4",
     "express": "^4.17.1",
-    "express-http-proxy":"1.6.3",
-    "http-proxy-middleware":"2.0.1",
+    "body-parser": "^1.19.0",
     "material": "^0.4.3",
     "path": "^0.12.7",
+    "typescript": "~3.9.5",
+    "ngx-file-drag-drop": "^5.1.2",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "typescript": "~3.9.5",
