@@ -55,7 +55,7 @@ curl -fsSL https://clis.cloud.ibm.com/install/osx | sh
 ```shell
 ibmcloud plugin install cloud-object-storage
 ibmcloud plugin install container-registry
-ibmcloud plugin install cloud-functionsGood M
+ibmcloud plugin install cloud-functions
 ibmcloud plugin install container-service
 ```
 ### Creating K8S Cluster
@@ -80,7 +80,7 @@ ibmcloud ks cluster config --cluster mycluster-free
 
 The app is now ready to be deployed on Heroku. Yay!
 
-**NOTE - If you see a warning similar to - Your global Angular CLI version (12.2.12) is greater than your local version (10.0.8), there's nothing to worry about.
+**NOTE - If you see a warning similar to - Your global Angular CLI version (12.2.12) is greater than your local version (10.0.8), there's nothing to worry about.**
 
 ### Setting up Heroku
 
@@ -111,10 +111,17 @@ NOTE - Remember to delete the K8S instance you created earlier after you're done
 
 ### Deploying the Angular App on Heroku
 
-1. In the Deploy menu, under Deployment method, select GitHub and connect to the github repo you just forked/cloned. For us it was the main branch. This will help us to make automatic deployments every time we push to our master branch.
+1. In the Deploy menu, under Deployment method, select GitHub and connect to the github repo you just forked/cloned. For us it was the main branch. This will help us to make automatic deployments every time we push to our main branch.
 2. Run ```shell npm i express --save locally``` to access the express server that helps us serve our hosted application.
 3. Go to Heroku Dashboard > Select your app > Deploy > Deploy Branch
 4. Your app will be up and running on the Heroku platform. 
+
+### Deploying the Angular App locally
+
+1. Download the code from Github - https://github.com/AllaPranathi/Shepherdme.ai/tree/FileUpload_backup 
+2. Unzip the folder and open the location in terminal
+3. Run npm i to install the necessary libraries and dependencies
+4. Run npm run ng serve to compile and locally run the app. By default the angular app runs on https:localhost:4200/ 
 
 And that's it Folks!
 
