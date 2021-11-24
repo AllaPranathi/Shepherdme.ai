@@ -1,5 +1,6 @@
 //Install express server
 const express = require('express');
+const http = require('http');
 const path = require('path');
 
 const app = express();
@@ -18,7 +19,7 @@ app.post('/data', function(req, res) {
             'Content-Length': req.length
         }
     }
-    const predictReq = https.request(options, predictRes => {
+    const predictReq = http.request(options, predictRes => {
         console.log('statusCode: ${res.statusCode}')
         predictRes.on('data', d => {
             res.send(d)
