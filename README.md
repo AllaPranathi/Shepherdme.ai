@@ -138,5 +138,12 @@ And that's it Folks!
 
 ## Project Limitations
 
-Since it was just a Semester long effort, the project has it's limitations. This is especially in terms of identiying based on the actual context of the sentence(s). The image shown below verifies the same 
+Since it was just a Semester long effort, the project has it's limitations. 
+
+1. Only text file upload is supported as part of the MVP. As part of future enhancements, .docx, .pptx, .rtf files will be supported in the next set of releases.
+2. Further enhancements are required to semantic analysis capabilities of the model supporting the application. As part of the next feature rollout, increase in accuracy would be required to better predict toxicity and abuse. (See the screenshot below)
+3. The current User Interface only supports and tested on Desktop resolutions of 1440px and 1040 px.
+
 ![Project Limitations](https://github.com/AllaPranathi/Shepherdme.ai/blob/main/screenshots/limitations.PNG "Project Limitations")
+
+**Note - If you want to upload a file after using the application once, you can only do so after clearing the existing result, i.e. If you checked for something once (Text/File), until you reset it using the Clear button, the drag/click to select file will be disabled.**
