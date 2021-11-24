@@ -69,7 +69,11 @@ ibmcloud ks cluster config --cluster mycluster-free
 ```
 ### Cloning and downloading the project
 
-Download [ShepherdMe.ai project](https://github.com/AllaPranathi/Shepherdme.ai.git). If using command line remember to use git clone followed by the link!
+1. Clone/Fork the [ShepherdMe.ai project](https://github.com/AllaPranathi/Shepherdme.ai.git) by clicking on the Fork button shown below
+
+![Fork Button](https://github.com/AllaPranathi/Shepherdme.ai/blob/main/screenshots/fork.PNG "Fork Button")
+
+ 2. Download [ShepherdMe.ai project](https://github.com/AllaPranathi/Shepherdme.ai.git). If using command line remember to use git clone followed by the link!
   - Unzip the folder and open the location in Powershell
   - Run ```shell npm i``` to install the necessary libraries and dependencies
   - Run ```shell npm run ng serve``` to compile and locally run the app. By default the angular app runs on https:
@@ -126,4 +130,6 @@ And that's it Folks!
 ![Non-Abusive Content Reported](https://github.com/AllaPranathi/Shepherdme.ai/blob/main/screenshots/file-upload.PNG "Non-Abusive Content Reported")
 
 ## Project Limitations
+
+Since it was just a Semester long effort, the project has it's limitations. This is especially in terms of identiying based on the actual context of the sentence(s). The image shown below verifies the same 
 ![Project Limitations](https://github.com/AllaPranathi/Shepherdme.ai/blob/main/screenshots/limitations.PNG "Project Limitations")
