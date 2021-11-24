@@ -13,7 +13,7 @@ app.use(express.static(__dirname + '/dist/AbuseFlagger'));
 
 
 app.get('/', function(req,res) {
-  res.sendFile(path.join(__dirname+'/dist/AbuseFlagger/index.html'));
+    res.sendFile(path.join(__dirname+'/dist/AbuseFlagger/index.html'));
 });
 
 app.post('/data', function(req, res) {
@@ -42,8 +42,6 @@ app.post('/data', function(req, res) {
   predictReq.write(JSON.stringify(req.body))
   predictReq.end()
 })
-
-
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
 
