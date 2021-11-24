@@ -1,41 +1,50 @@
 //Install express server
 const express = require('express');
-const http = require('http');
 const path = require('path');
+const http = require('http');
+const bodyParser = require('body-parser')
 
 const app = express();
+
+app.use(bodyParser.json());
 
 // Serve only the static files fr0m the dist directory
 app.use(express.static(__dirname + '/dist/AbuseFlagger'));
 
+
+app.get('/', function(req,res) {
+  res.sendFile(path.join(__dirname+'/dist/AbuseFlagger/index.html'));
+});
+
 app.post('/data', function(req, res) {
-    console.log("Received request")
-    const options = {
-        hostname: 'http://169.51.206.176',
-        port: 32451,
-        path: '/model/predict',
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Content-Length': req.body.length
-        }
+  console.log("Request received" + req.body)
+  const options = {
+    hostname: '169.51.206.176',
+    port: '32451',
+    path: '/model/predict',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
     }
-    const predictReq = http.request(options, predictRes => {
-        console.log('statusCode: ${res.statusCode}')
-        predictRes.on('data', function (data) {
-            curr = data.body
-        })
-        predictRes.on('end', function() {
-            res.end(curr)
-        })
+  }
+  const predictReq = http.request(options, predictRes => {
+    console.log('statusCode: ${res.statusCode}')
+    predictRes.on('data', d => {
+      data = d
     })
-    predictReq.write(req.body)
-    predictReq.end()
+    predictRes.on('end', d => {
+      res.send(data)
+    })
+    predictRes.on('error', d => {
+      console.log(d)
+    })
+  })
+  predictReq.write(JSON.stringify(req.body))
+  predictReq.end()
 })
 
-app.get('/*', function(req,res) {
-    res.sendFile(path.join(__dirname+'/dist/AbuseFlagger/index.html'));
-});
+
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
+
 console.log("Server started")
