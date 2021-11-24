@@ -8,7 +8,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-// Serve only the static files fr0m the dist directory
+// Serve only the static files from the dist directory
 app.use(express.static(__dirname + '/dist/AbuseFlagger'));
 
 
