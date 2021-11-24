@@ -10,7 +10,7 @@ import { FileValidators, NgxFileDragDropComponent } from "ngx-file-drag-drop";
 })
 export class AppComponent {
   title = 'AbuseFlagger';
-  url = "http://localhost:4200/api";
+  url = "https://heroku-deployment-shepherme.herokuapp.com/data";
   parsedjson = {}
   filetext;
   text;
